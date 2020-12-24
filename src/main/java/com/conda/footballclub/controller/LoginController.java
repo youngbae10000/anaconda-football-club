@@ -1,8 +1,11 @@
 package com.conda.footballclub.controller;
 
+import com.conda.footballclub.dto.request.LoginRequestDto;
+import com.conda.footballclub.dto.request.SignUpRequestDto;
 import com.conda.footballclub.service.loginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
@@ -13,9 +16,25 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @GetMapping("/login")
-    public String login() {
-        loginService.checkIdPassword();
+    @GetMapping("/")
+    public String loginPage() {
         return "login";
+    }
+
+    @PostMapping("/user/login")
+    public String loginProcess(LoginRequestDto loginRequestDto) {
+        loginService.loginProcess(loginRequestDto);
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/signup")
+    public String signUp() {
+        return "signup";
+    }
+
+    @PostMapping("/user/signup")
+    public String signUpProcess(SignUpRequestDto signUpRequestDto) {
+        loginService.signUpProcess(signUpRequestDto);
+        return "";
     }
 }

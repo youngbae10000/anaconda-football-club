@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,18 +12,17 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form>
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <form action="/user/login" method="post">
+        <label for="id" class="visually-hidden">ID</label>
+        <input type="text" id="id" name="id" class="form-control" placeholder="ID" required autofocus>
+        <label for="password" class="visually-hidden">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">login</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
     </form>
 </main>
 </body>

@@ -1,18 +1,30 @@
 package com.conda.footballclub.service;
 
-import com.conda.footballclub.dao.UserDao;
+import com.conda.footballclub.dao.MemberDao;
+import com.conda.footballclub.dto.request.LoginRequestDto;
+import com.conda.footballclub.dto.request.SignUpRequestDto;
+import com.conda.footballclub.model.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class loginService {
 
-    private UserDao userDao;
+    private MemberDao memberDao;
 
-    public loginService(UserDao userDao) {
-        this.userDao = userDao;
+    @Transactional(readOnly = true)
+    public void loginProcess(LoginRequestDto loginRequestDto) {
+        Member member = memberDao.getMember(loginRequestDto);
     }
 
-    public void checkIdPassword() {
-        System.out.println(userDao.getUser());
+    @Transactional
+    public void signUpProcess(SignUpRequestDto signUpRequestDto) {
+        if() {
+
+        } else {
+            memberDao.signIn(signUpRequestDto);
+        }
     }
 }
