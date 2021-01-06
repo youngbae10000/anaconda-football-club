@@ -4,9 +4,6 @@
     <title>게시글 상세 보기</title>
 </head>
 <body class="bg-light">
-
-    <th:block th:include="fragments/common/topBar.html"></th:block>
-
 <div class="container">
     <div class="row">
         <h5>게시글 수정</h5>
@@ -32,7 +29,7 @@
         </div>
 </div>
 </body>
-<script src="/static/jquery/jquery-3.5.1.min.js"></script>
-<script src="/js/ajaxBeforeSend.min.js"></script>
-<script src="/js/update.min.js"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="js/ajaxBeforeSend.min.js"></script>
+<script src="js/update.min.js"></script>
 </html>

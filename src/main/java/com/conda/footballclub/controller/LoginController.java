@@ -23,8 +23,10 @@ public class LoginController {
 
     @PostMapping("/user/login")
     public String loginProcess(LoginRequestDto loginRequestDto) {
-        loginService.loginProcess(loginRequestDto);
-        return "redirect:/dashboard";
+        if(loginService.loginProcess(loginRequestDto)){
+            return "redirect:/dashboard";
+        }
+        return "login";
     }
 
     @GetMapping("/signup")

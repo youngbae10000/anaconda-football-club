@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Member {
 
     private int memberIdx;
-    private String memberUserid;
+    private String memberUserId;
     private String memberEmail;
     private String memberPassword;
 }

@@ -4,7 +4,6 @@
     <title>게시글 상세 보기</title>
 </head>
 <body>
-<th:block th:include="fragments/common/topBar.html"></th:block>
 <div class="ArticleBtnBox container p-2 mb-2">
     <div class="row">
         <input type="hidden" id="boardSeq" th:value="${boardDetail.getBoardSeq()}">
@@ -101,11 +100,11 @@
     </div>
 </div>
 
-<script src="/static/jquery/jquery-3.5.1.min.js"></script>
-<script src="/bootstrap-4.5.0/dist/js/bootstrap.js"></script>
-<script src="/js/ajaxBeforeSend.min.js"></script>
-<script src="/js/reply/replyList.min.js"></script>
-<script src="/js/reply/replyCRUD.min.js"></script>
-<script src="/js/currentPageEvent.min.js"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ajaxBeforeSend.min.js"></script>
+<script src="js/reply/replyList.min.js"></script>
+<script src="js/reply/replyCRUD.min.js"></script>
+<script src="js/currentPageEvent.min.js"></script>
 </body>
 </html>

@@ -12,19 +12,23 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class loginService {
 
-    private MemberDao memberDao;
+    private final MemberDao memberDao;
 
     @Transactional(readOnly = true)
-    public void loginProcess(LoginRequestDto loginRequestDto) {
+    public boolean loginProcess(LoginRequestDto loginRequestDto) {
         Member member = memberDao.getMember(loginRequestDto);
+        if(loginRequestDto.getId().equals(member.getMemberUserId()) && loginRequestDto.getPassword().equals(member.getMemberPassword())) {
+            return true;
+        }
+            return false;
     }
 
     @Transactional
     public void signUpProcess(SignUpRequestDto signUpRequestDto) {
-        if() {
-
-        } else {
-            memberDao.signIn(signUpRequestDto);
-        }
+//        if() {
+//
+//        } else {
+//            memberDao.signIn(signUpRequestDto);
+//        }
     }
 }

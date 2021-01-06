@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Page</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-    <link href="resources/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="resources/css/login.css" rel="stylesheet">
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body class="text-center">
 

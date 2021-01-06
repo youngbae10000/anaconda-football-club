@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title>Sign Up</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
-    <link href="resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="resources/css/form-validation.css" rel="stylesheet">
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -53,7 +53,7 @@
         <p class="mb-1">2020 Company Name</p>
     </footer>
 </div>
-<script src="resources/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="resources/js/form-validation.js"></script>
+<script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/form-validation.js"></script>
 </body>
 </html>
