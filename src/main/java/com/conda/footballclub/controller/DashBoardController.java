@@ -1,16 +1,18 @@
 package com.conda.footballclub.controller;
 
 import com.conda.footballclub.service.BoardService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@RequiredArgsConstructor
 public class DashBoardController {
 
     private final BoardService boardService;
+
+    public DashBoardController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
