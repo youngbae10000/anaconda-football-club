@@ -1,9 +1,11 @@
 package com.conda.footballclub.controller;
 
+import com.conda.footballclub.dto.request.BoardWriteRequestDto;
 import com.conda.footballclub.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class DashBoardController {
@@ -30,8 +32,14 @@ public class DashBoardController {
         return "update";
     }
 
-    @GetMapping("/writer")
+    @GetMapping("/write")
     public String write() {
         return "write";
+    }
+
+    @PostMapping("/write")
+    public String boardWrite(BoardWriteRequestDto writeRequestDto) {
+        boardService.boardWrite(writeRequestDto);
+        return null;
     }
 }

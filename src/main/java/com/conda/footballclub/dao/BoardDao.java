@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface BoardDao {
     List<Board> getAllBoardList();
+
+    void boardWrite(Board board);
 }
