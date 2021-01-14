@@ -1,66 +1,63 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <head>
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>게시글 상세 보기</title>
 </head>
 <body>
-<div class="ArticleBtnBox container p-2 mb-2">
-    <div class="row">
-        <input type="hidden" id="boardSeq" th:value="${boardDetail.getBoardSeq()}">
-        <a class="btn btn-outline-primary ml-2 mr-3" th:href="@{'/?page='+${page}}" role="button">목록</a>
-        <a class="btn btn-outline-secondary mr-3" th:href="@{'/board/update/' + ${boardDetail.getBoardSeq()}+'?page='+${page}}"
-           th:if="${boardDetail.isUpdateDeletePermission()}" role="button">수정</a>
-        <a th:action="'/board/delete/'+${boardDetail.getBoardSeq()}" th:method="post"></a>
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-board" th:if="${boardDetail.isUpdateDeletePermission()}">삭제</button>
-    </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="delete-board" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="boardModalLabel">!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>게시물을 삭제하시겠습니까?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a type="button" class="btn btn-danger" th:href="@{'/board/delete/' + ${boardDetail.getBoardSeq()}+'?page='+${page}}" >Delete</a>
+<div class="container-fluid">
+    <input type="hidden" id="boardSeq" data-boardSeq="${board.boardIdx}">
+    <div class="btn-toolbar">
+        <h1 class="h2">Dashboard</h1>
+        <a type="button" class="btn btn-outline-primary" href="dashboard">목록</a>
+        <a type="button" class="btn btn-outline-secondary" id="updateBtn">수정</a>
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="boardModalLabel">!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>게시물을 삭제하시겠습니까?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-danger"
+                           href="delete?idx=${board.boardIdx}">Delete</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="ArticleContentBox container border shadow-sm">
-
-    <div class="ArticleHeader container p-2 pl-5">
-        <div>
-            <h3 name="boardTitle" th:text="${boardDetail.getBoardTitle()}"></h3>
-        </div>
-        <div>
-            <span name="boardWriter" th:text="${boardDetail.getBoardWriter()}"></span>
-            <span th:text="${boardDetail.getModifiedDate()}"></span>
-        </div>
-
+<div class="container border shadow-sm">
+    <div>
+        <h3 name="boardTitle">${board.boardTitle}</h3>
+        <span name="boardWriter">${board.boardUserId}</span>
+        <span>${board.boardUpdateDate}</span>
     </div>
     <hr>
-    <div class="ArticleContainer">
+    <div>
         <div class="row p-2 pl-5">
-            <p style="font-size: 14px" th:utext="${#strings.replace(text, newLineChar, '<br/>')}"
-               th:with="text=${boardDetail.getBoardContent()}"></p>
+            <p style="font-size: 14px">${board.boardContent}</p>
         </div>
         <hr>
         <div class="ArticleContainerReplyWriteBox p-3">
-            <div class="row pl-5" th:if="${boardDetail.isReplyButtonPermission()}">
+            <div class="row pl-5">
                 <textarea class="form-control w-50 col-md-6" id="replyContent0" placeholder="댓글 내용" style="resize: none"></textarea>
                 <button class="btn btn-outline-success col-md-1 ml-2" id="newReplySaveBtn">등록</button>
             </div>
-            <div th:unless="${boardDetail.isReplyButtonPermission()}">
+            <div>
                 <span>로그인 시 댓글 서비스를 이용하실 수 있습니다</span>
             </div>
         </div>
@@ -79,7 +76,8 @@
     </nav>
 
     <!-- Modal -->
-    <div class="modal fade" id="delete-reply" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-reply" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -93,7 +91,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" id="reply-delete-modal-btn" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-danger" id="reply-delete-modal-btn" data-dismiss="modal">
+                        Delete
+                    </button>
                 </div>
             </div>
         </div>

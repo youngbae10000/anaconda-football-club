@@ -31,4 +31,8 @@ public class BoardService {
         board.setBoardUpdateDate(Timestamp.valueOf(LocalDateTime.now()));
         boardDao.boardWrite(board);
     }
+
+    public Board getOneBoard(String idx) {
+        return boardDao.getOneBoard(idx);
+    }
 }

@@ -23,7 +23,8 @@ public class DashBoardController {
     }
 
     @GetMapping("/detail")
-    public String detail() {
+    public String detail(Model model, String idx) {
+        model.addAttribute("board", boardService.getOneBoard(idx));
         return "detail";
     }
 

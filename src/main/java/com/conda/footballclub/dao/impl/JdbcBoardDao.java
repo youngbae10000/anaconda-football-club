@@ -30,6 +30,13 @@ public class JdbcBoardDao implements BoardDao {
                 new Object[]{null, "andy4573", board.getBoardTitle(), board.getBoardContent(), board.getBoardCreateDate(), board.getBoardUpdateDate()});
     }
 
+    @Override
+    public Board getOneBoard(String idx) {
+        String sql = "SELECT * FROM BOARD WHERE board_idx = ?";
+        Board board = jdbcTemplate.queryForObject(sql, new Object[]{idx}, mapper);
+        return board;
+    }
+
     static RowMapper<Board> mapper = (rs, rowNum) -> {
         Board board = new Board();
         board.setBoardIdx(rs.getInt("board_idx"));

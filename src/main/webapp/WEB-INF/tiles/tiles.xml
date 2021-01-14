@@ -19,4 +19,8 @@
         <put-attribute name="body" value="/WEB-INF/views/write.jsp" />
     </definition>
 
+    <definition name="detail" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/detail.jsp" />
+    </definition>
+
 </tiles-definitions>

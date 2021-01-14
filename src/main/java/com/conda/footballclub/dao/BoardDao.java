@@ -8,4 +8,6 @@ public interface BoardDao {
     List<Board> getAllBoardList();
 
     void boardWrite(Board board);
+
+    Board getOneBoard(String idx);
 }
