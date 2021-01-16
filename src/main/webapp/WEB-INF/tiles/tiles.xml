@@ -23,4 +23,8 @@
         <put-attribute name="body" value="/WEB-INF/views/detail.jsp" />
     </definition>
 
+    <definition name="modify" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/views/modify.jsp" />
+    </definition>
+
 </tiles-definitions>

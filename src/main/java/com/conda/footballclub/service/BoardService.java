@@ -35,4 +35,12 @@ public class BoardService {
     public Board getOneBoard(String idx) {
         return boardDao.getOneBoard(idx);
     }
+
+    public void updateBoard(Board board) {
+        boardDao.updateBoard(board);
+    }
+
+    public void deleteBoard(String idx) {
+        boardDao.deleteBoard(idx);
+    }
 }

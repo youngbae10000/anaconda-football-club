@@ -1,6 +1,7 @@
 package com.conda.footballclub.controller;
 
 import com.conda.footballclub.dto.request.BoardWriteRequestDto;
+import com.conda.footballclub.model.Board;
 import com.conda.footballclub.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +29,27 @@ public class DashBoardController {
         return "detail";
     }
 
-    @GetMapping("/update")
-    public String update() {
-        return "update";
+    @GetMapping("/modify")
+    public String modify(Model model, String idx) {
+        model.addAttribute("board", boardService.getOneBoard(idx));
+        return "modify";
+    }
+
+    @PostMapping("/update")
+    public String update(Board board) {
+        boardService.updateBoard(board);
+        return "redirect:detail?idx="+board.getBoardIdx();
     }
 
     @GetMapping("/write")
     public String write() {
         return "write";
+    }
+
+    @GetMapping("/delete")
+    public String delete(String idx) {
+        boardService.deleteBoard(idx);
+        return "redirect:dashboard";
     }
 
     @PostMapping("/write")

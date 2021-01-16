@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -35,6 +36,17 @@ public class JdbcBoardDao implements BoardDao {
         String sql = "SELECT * FROM BOARD WHERE board_idx = ?";
         Board board = jdbcTemplate.queryForObject(sql, new Object[]{idx}, mapper);
         return board;
+    }
+
+    @Override
+    public void updateBoard(Board board) {
+        jdbcTemplate.update("UPDATE board SET board_title = ?, board_content = ?, board_update_date = ? WHERE board_idx = ?",
+                new Object[]{board.getBoardTitle(), board.getBoardContent(), LocalDateTime.now(), board.getBoardIdx()});
+    }
+
+    @Override
+    public void deleteBoard(String idx) {
+        jdbcTemplate.update("delete FROM board where board_idx = ?", idx);
     }
 
     static RowMapper<Board> mapper = (rs, rowNum) -> {

@@ -4,18 +4,15 @@
 <!DOCTYPE html>
 <head>
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>게시글 상세 보기</title>
+    <title>게시글 수정 하기</title>
 </head>
 <body>
 
 <div class="container-fluid">
-    <input type="hidden" id="boardSeq" data-boardSeq="${board.boardIdx}">
     <div class="btn-toolbar">
         <h1 class="h2">Dashboard</h1>
         <a type="button" class="btn btn-outline-primary" href="dashboard">목록</a>
-        <a type="button" class="btn btn-outline-secondary" href="modify?idx=${board.boardIdx}">수정</a>
-        <a type="button" class="btn btn-outline-danger" href="delete?idx=${board.boardIdx}">삭제</a>
-<%--        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>--%>
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
 
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,15 +39,17 @@
 </div>
 
 <div class="container border shadow-sm">
+    <form method="post" action="update">
+        <input type="hidden" id="boardSeq" name="boardIdx" value="${board.boardIdx}">
     <div>
-        <h3 name="boardTitle">${board.boardTitle}</h3>
-        <span name="boardWriter">${board.boardUserId}</span>
-        <span>${board.boardUpdateDate}</span>
+        <input name="boardTitle" name="boardTitle" value="${board.boardTitle}" />
+        <span name="boardUserId" >${board.boardUserId}</span>
+        <span name="boardUpdateDate">${board.boardUpdateDate}</span>
     </div>
     <hr>
     <div>
         <div class="row p-2 pl-5">
-            <p style="font-size: 14px">${board.boardContent}</p>
+            <textarea style="font-size: 14px" name="boardContent">${board.boardContent}</textarea>
         </div>
         <hr>
         <div class="ArticleContainerReplyWriteBox p-3">
@@ -63,8 +62,8 @@
             </div>
         </div>
     </div>
-    <div class="ArticleBtn">
-    </div>
+    <button type="submit" class="btn btn-outline-secondary">수정하기</button>
+    </form>
 </div>
 
 <div class="ReplayBox container border shadow-sm pt-4 mt-4">
@@ -103,9 +102,5 @@
 
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="bootstrap/dist/js/bootstrap.js"></script>
-<script src="js/ajaxBeforeSend.min.js"></script>
-<script src="js/reply/replyList.min.js"></script>
-<script src="js/reply/replyCRUD.min.js"></script>
-<script src="js/currentPageEvent.min.js"></script>
 </body>
 </html>

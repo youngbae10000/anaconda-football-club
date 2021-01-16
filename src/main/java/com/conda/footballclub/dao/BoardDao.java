@@ -10,4 +10,8 @@ public interface BoardDao {
     void boardWrite(Board board);
 
     Board getOneBoard(String idx);
+
+    void updateBoard(Board board);
+
+    void deleteBoard(String idx);
 }
